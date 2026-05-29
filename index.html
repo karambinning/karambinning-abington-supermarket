@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Abington Supermarket — Wellingborough Road, Northampton NN1 4EJ</title>
+<meta name="description" content="Abington Supermarket. The corner shop at 244 Wellingborough Road, Northampton — NN1 4EJ. A local convenience store near the County Ground." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#FCFAF4;
+  --paper-warm:#E9D5A1;
+  --ink:#0F0E0C;
+  --ink-2:#26221C;
+  --clay:#C8451B;
+  --clay-deep:#8A2E10;
+  --rule:rgba(15,14,12,.5);
+  --rule-soft:rgba(15,14,12,.18);
+  --display:"Big Shoulders Display","Impact",sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1rem,.55rem + .8vw,1.12rem);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-wrap:pretty;
+  hyphens:auto;
+  overflow-x:hidden;
+}
+/* paper grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(0deg,rgba(15,14,12,.022) 0 1px,transparent 1px 3px),
+    radial-gradient(circle at 15% 12%,rgba(15,14,12,.035),transparent 55%),
+    radial-gradient(circle at 85% 92%,rgba(200,69,27,.04),transparent 60%);
+  mix-blend-mode:multiply;
+  z-index:1;
+}
+main,header,footer,section{position:relative;z-index:2}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.01em;line-height:.88;text-wrap:balance;text-transform:uppercase}
+
+/* -------- TOP STRIP (postcode pill follows scroll) -------- */
+.top{
+  border-bottom:1px solid var(--rule);
+  padding:14px clamp(18px,4vw,52px);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:18px;flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.05em;
+}
+.top .id{display:flex;gap:14px;align-items:center}
+.top .id .bullet{display:inline-block;width:8px;height:8px;background:var(--clay);border-radius:50%}
+.top .id b{font-weight:500;text-transform:uppercase;letter-spacing:.18em}
+.top nav{display:flex;gap:22px;flex-wrap:wrap}
+.top nav a{position:relative;padding:2px 0;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem}
+.top nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:var(--clay);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .25s ease;
+}
+.top nav a:hover::after{transform:scaleX(1)}
+
+/* -------- HERO MASTHEAD -------- */
+.hero{
+  padding:clamp(40px,8vw,110px) clamp(18px,4vw,52px) clamp(28px,5vw,68px);
+  border-bottom:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(20px,4vw,52px);
+  align-items:end;
+}
+.hero .pre{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.72rem;
+  margin-bottom:clamp(20px,3vw,32px);
+  display:inline-flex;align-items:center;gap:14px;
+}
+.hero .pre i{display:inline-block;width:38px;height:1px;background:var(--ink);font-style:normal;opacity:.55}
+.hero h1{
+  font-size:clamp(3.8rem,16.5vw,15.5rem);
+  font-weight:900;
+  line-height:.82;
+  letter-spacing:-.02em;
+}
+.hero h1 span.amp{
+  color:var(--clay);
+  display:block;
+  font-style:italic;
+  font-weight:700;
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:.18em;
+  letter-spacing:.06em;
+  text-transform:lowercase;
+  margin:.18em 0 .06em .12em;
+  line-height:1;
+}
+.hero h1 .ws{display:inline-block}
+/* address card — return-address block */
+.addr{
+  border-top:3px double var(--ink);
+  border-bottom:3px double var(--ink);
+  padding:18px 22px;
+  font-family:var(--mono);
+  font-size:.78rem;
+  line-height:1.55;
+  letter-spacing:.02em;
+  max-width:280px;
+  background:var(--paper);
+  transform:rotate(-1.2deg);
+  box-shadow:6px 6px 0 var(--ink);
+}
+.addr .label{
+  font-family:var(--display);
+  font-size:.92rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--clay-deep);
+  margin-bottom:8px;
+  display:block;
+}
+.addr strong{font-weight:600}
+.addr .pc{
+  margin-top:10px;display:inline-block;
+  background:var(--ink);color:var(--paper);
+  padding:3px 10px;font-weight:500;letter-spacing:.12em;
+}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;align-items:start}
+  .addr{transform:rotate(-1.6deg);margin-top:8px}
+}
+
+/* -------- MARQUEE STRIP -------- */
+.marquee{
+  background:var(--ink);
+  color:var(--paper);
+  border-top:6px solid var(--clay);
+  border-bottom:6px solid var(--clay);
+  overflow:hidden;
+  padding:18px 0;
+  --speed:42s;
+}
+.marquee__track{
+  display:inline-flex;gap:3rem;white-space:nowrap;
+  animation:scroll var(--speed) linear infinite;
+  will-change:transform;
+}
+.marquee span{
+  font-family:var(--display);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:clamp(1.7rem,4.2vw,3rem);
+  line-height:1;
+  display:inline-flex;align-items:center;gap:3rem;
+}
+.marquee span em{
+  font-style:normal;color:var(--clay);
+  font-family:var(--display);
+  -webkit-text-stroke:1.5px var(--clay);
+  color:transparent;
+}
+.marquee span::after{
+  content:"●";color:var(--clay);font-size:.4em;margin-left:1.5rem;
+  display:inline-block;transform:translateY(-.35em);
+}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .marquee__track{animation:none}
+}
+
+/* -------- BLOCK: ON THE CORNER -------- */
+.corner{
+  padding:clamp(60px,9vw,120px) clamp(18px,4vw,52px);
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,80px);
+  align-items:start;
+  border-bottom:1px solid var(--rule);
+}
+.corner .eyebrow{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.72rem;
+  margin-bottom:16px;
+  color:var(--clay-deep);
+}
+.corner h2{
+  font-size:clamp(2.4rem,6.5vw,5.2rem);
+  margin-bottom:24px;
+}
+.corner h2 em{color:var(--clay);font-style:normal}
+.corner p{
+  font-size:clamp(1.05rem,.6rem + .9vw,1.32rem);
+  line-height:1.5;
+  max-width:42ch;
+  margin-bottom:1.1em;
+}
+.corner p + p{opacity:.85}
+.corner .right{
+  padding:28px;
+  background:var(--paper-warm);
+  border:1px solid var(--ink);
+  position:relative;
+}
+.corner .right::before{
+  content:"NN1 4EJ";
+  position:absolute;top:-14px;right:18px;
+  background:var(--paper);
+  padding:2px 12px;
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.18em;
+  border:1px solid var(--ink);
+}
+.corner .right h3{
+  font-size:1.4rem;letter-spacing:.04em;margin-bottom:14px;
+}
+.corner .right ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.corner .right li{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:14px;
+  border-bottom:1px dotted var(--rule);
+  padding-bottom:8px;
+  font-family:var(--mono);
+  font-size:.86rem;
+}
+.corner .right li:last-child{border-bottom:0}
+.corner .right li b{font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;color:var(--ink-2)}
+.corner .right li span{font-weight:500;text-align:right;letter-spacing:.02em}
+@media (max-width:820px){
+  .corner{grid-template-columns:1fr}
+}
+
+/* -------- COLOURED SLAB: WHERE TO FIND IT -------- */
+.find{
+  background:var(--ink);
+  color:var(--paper);
+  padding:clamp(60px,9vw,130px) clamp(18px,4vw,52px);
+}
+.find-inner{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,80px);
+  align-items:end;
+}
+.find .eyebrow{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.72rem;
+  margin-bottom:20px;
+  color:var(--paper-warm);
+}
+.find h2{
+  font-size:clamp(3rem,9vw,8rem);
+  letter-spacing:-.02em;
+  margin-bottom:8px;
+}
+.find h2 .clay{color:var(--clay)}
+.find p{
+  max-width:38ch;
+  font-size:1.05rem;
+  opacity:.85;
+  margin-top:18px;
+}
+.find .card{
+  background:var(--paper);
+  color:var(--ink);
+  padding:32px clamp(20px,3vw,40px);
+  border:1px solid var(--paper-warm);
+  position:relative;
+}
+.find .card::before{
+  content:"";position:absolute;inset:-8px;
+  border:1px solid var(--paper-warm);
+  pointer-events:none;
+}
+.find .card .row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:18px;flex-wrap:wrap;
+  padding:14px 0;
+  border-bottom:1px dotted var(--rule);
+}
+.find .card .row:last-child{border-bottom:0}
+.find .card .row b{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.7rem;
+  font-weight:500;
+  color:var(--clay-deep);
+}
+.find .card .row span{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.2rem;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  text-align:right;
+}
+.find .card .row span.pc{
+  background:var(--clay);color:var(--paper);
+  padding:2px 12px;
+}
+.find .card .map{
+  margin-top:18px;
+  padding:18px 0 4px;
+  border-top:3px double var(--ink);
+  font-family:var(--mono);
+  font-size:.78rem;
+  line-height:1.7;
+  letter-spacing:.02em;
+}
+.find .card .map em{font-style:italic;opacity:.8}
+@media (max-width:820px){
+  .find-inner{grid-template-columns:1fr}
+}
+
+/* -------- SCROLL REVEAL -------- */
+@supports (animation-timeline: view()){
+  .reveal{
+    animation:rise both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 25%;
+  }
+  @keyframes rise{
+    from{opacity:0;transform:translateY(1.6rem)}
+    to{opacity:1;transform:translateY(0)}
+  }
+}
+
+/* -------- FOOTER LETTERHEAD -------- */
+footer{
+  padding:clamp(48px,7vw,90px) clamp(18px,4vw,52px) 38px;
+  border-top:6px double var(--ink);
+  background:var(--paper);
+}
+footer .head{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(2rem,5.5vw,4.5rem);
+  letter-spacing:-.01em;
+  line-height:.9;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+footer .head em{color:var(--clay);font-style:normal}
+footer .lines{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:18px;
+  font-family:var(--mono);
+  font-size:.82rem;
+  letter-spacing:.02em;
+  line-height:1.55;
+  padding:22px 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+footer .lines div b{
+  display:block;
+  font-family:var(--display);
+  font-weight:800;
+  letter-spacing:.18em;
+  font-size:.78rem;
+  color:var(--clay-deep);
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+footer .colophon{
+  display:flex;justify-content:space-between;
+  gap:18px;flex-wrap:wrap;
+  margin-top:22px;
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.08em;
+  opacity:.75;
+  text-transform:uppercase;
+}
+footer .colophon .mark{display:inline-block;width:6px;height:6px;background:var(--clay);border-radius:50%;margin-right:8px;vertical-align:middle}
+
+/* -------- skip nav -------- */
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:8px;top:8px;background:var(--ink);color:var(--paper);padding:6px 12px;z-index:99}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important;animation-iteration-count:1 !important;scroll-behavior:auto !important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="id"><span class="bullet" aria-hidden="true"></span><b>Abington Supermarket</b><span aria-hidden="true">·</span><span>Northampton</span></div>
+  <nav aria-label="Section">
+    <a href="#corner">The Shop</a>
+    <a href="#find">Find Us</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div>
+    <span class="pre"><i aria-hidden="true"></i>Est. on the Wellingborough Road</span>
+    <h1>
+      <span class="ws">Abington</span>
+      <span class="amp">— the supermarket on —</span>
+      <span class="ws">Wellingboro&#39;</span>
+    </h1>
+  </div>
+  <aside class="addr" aria-label="Address">
+    <span class="label">Find the door</span>
+    <strong>Abington Supermarket</strong><br />
+    244 Wellingborough Road<br />
+    Northampton
+    <div><span class="pc">NN1 4EJ</span></div>
+  </aside>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>The Corner Shop <em>·</em></span>
+    <span>NN1 4EJ <em>·</em></span>
+    <span>Wellingborough Road <em>·</em></span>
+    <span>A Local Convenience Store <em>·</em></span>
+    <span>Northampton <em>·</em></span>
+    <span>The Corner Shop <em>·</em></span>
+    <span>NN1 4EJ <em>·</em></span>
+    <span>Wellingborough Road <em>·</em></span>
+    <span>A Local Convenience Store <em>·</em></span>
+    <span>Northampton <em>·</em></span>
+  </div>
+</div>
+
+<section id="corner" class="corner">
+  <div class="reveal">
+    <div class="eyebrow">Block · 244</div>
+    <h2>One of those shops you walk past <em>a thousand times</em> and end up needing exactly when you need it.</h2>
+    <p>Abington Supermarket sits on Wellingborough Road — Northampton’s east-running artery of independent shops, takeaways and corner stores. A local convenience store. The kind of place a neighbourhood actually relies on.</p>
+    <p>No mission statement. No grand opening. Just the door, the road, the postcode.</p>
+  </div>
+  <aside class="right reveal">
+    <h3>The Particulars</h3>
+    <ul>
+      <li><b>House Number</b><span>244</span></li>
+      <li><b>Street</b><span>Wellingborough Rd</span></li>
+      <li><b>Town</b><span>Northampton</span></li>
+      <li><b>Postcode</b><span>NN1 4EJ</span></li>
+      <li><b>Trade</b><span>Convenience Store</span></li>
+      <li><b>Nearest landmark</b><span>The County Ground</span></li>
+    </ul>
+  </aside>
+</section>
+
+<section id="find" class="find">
+  <div class="find-inner">
+    <div class="reveal">
+      <div class="eyebrow">Coordinates</div>
+      <h2>Pop in.<br /><span class="clay">It’s on the way.</span></h2>
+      <p>Heading east out of the town centre on Wellingborough Road — past the County Ground, past the avenues — the door is right there at number 244. NN1 4EJ on the satnav.</p>
+    </div>
+    <div class="card reveal" aria-label="Address and location">
+      <div class="row"><b>Address</b><span>244 Wellingborough Rd</span></div>
+      <div class="row"><b>Town</b><span>Northampton</span></div>
+      <div class="row"><b>Postcode</b><span class="pc">NN1 4EJ</span></div>
+      <div class="row"><b>Nearby</b><span>The County Ground</span></div>
+      <div class="map">
+        <em>Easting:</em> 52.2420° N<br />
+        <em>Northing:</em> 0.8758° W<br />
+        <em>Type:</em> Local convenience store
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="head">Abington <em>·</em> Supermarket</div>
+  <div class="lines">
+    <div>
+      <b>The Shop</b>
+      244 Wellingborough Road<br />
+      Northampton<br />
+      NN1 4EJ
+    </div>
+    <div>
+      <b>The Road</b>
+      East from the town centre,<br />
+      past Abington Square,<br />
+      past the County Ground.
+    </div>
+    <div>
+      <b>Trade</b>
+      Local convenience store<br />
+      Independent · Northampton<br />
+      Open to the neighbourhood
+    </div>
+  </div>
+  <div class="colophon">
+    <div><span class="mark" aria-hidden="true"></span>Abington Supermarket · Northampton NN1</div>
+    <div>Set in Big Shoulders &amp; IBM Plex · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
